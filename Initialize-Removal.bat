@@ -25,7 +25,7 @@ PowerShell -NoProfile -Command "(New-Object Net.WebClient).DownloadFile('%adwUrl
 
 :: Open and initiate an AdwCleaner Scan
 echo 2. Starting AdwCleaner
-start %folder%\%adwApp% /noreboot /clean
+start %folder%\%adwApp% /eula /noreboot /clean
 
 :: Download Malwarebytes
 echo 3. Downloading Malwarebytes
