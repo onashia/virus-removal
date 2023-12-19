@@ -23,10 +23,19 @@ if not exist %folder% ( mkdir %folder% && echo %folder% created)
 echo 1. Downloading AdwCleaner
 PowerShell -NoProfile -Command "(New-Object Net.WebClient).DownloadFile('%adwUrl%', '%folder%\%adwFile%')"
 
-:: Open and initiate an AdwCleaner Scan
+:: Open and initiate an AdwCleaner scan
 echo 2. Starting AdwCleaner
-start %folder%\%adwApp% /eula /noreboot /clean /path "C:\STS\Logs"
+start %folder%\%adwApp% /eula /noreboot /clean
 
 :: Download Malwarebytes
 echo 3. Downloading Malwarebytes
 PowerShell -NoProfile -Command "(New-Object Net.WebClient).DownloadFile('%mwbUrl%', '%folder%\%mwbFile%')"
+
+:: Extract the compressed Malwarebytes file
+echo 4. Extracting Malwarebytes
+PowerShell -Command "Expand-Archive -LiteralPath '%folder%\%mwbFile%' -DestinationPath '%folder%'" >nul
+
+:: Open an initiate a Malwarebytes scan
+echo 5. Starting Malwarebytes
+start %folder%\%MwbApp% /scan:issues
+start %folder%\%MwbApp% /scan:malware
