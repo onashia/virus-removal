@@ -15,6 +15,7 @@ set "adwUrl=https://adwcleaner.malwarebytes.com/adwcleaner?channel=release"
 set "mwbApp=MBTSLauncher.exe"
 set "mwbFile=MBTS.zip"
 set "mwbUrl=https://toolset.malwarebytes.com/file/mbts/%key%"
+set "mwbSettings="
 
 :: Create %folder%
 if not exist %folder% ( mkdir %folder% && echo %folder% created)
@@ -35,7 +36,10 @@ PowerShell -NoProfile -Command "(New-Object Net.WebClient).DownloadFile('%mwbUrl
 echo 4. Extracting Malwarebytes
 PowerShell -Command "Expand-Archive -LiteralPath '%folder%\%mwbFile%' -DestinationPath '%folder%'" >nul
 
+echo 5. Applying Malwarebytes settings
+PowerShell -NoProfile -Command "(New-Object Net.WebClient).DownloadFile('%mwbSettings%', '%folder%\Malwarebytes\MBTS\Data\Configuration')"
+
 :: Open an initiate a Malwarebytes scan
-echo 5. Starting Malwarebytes
+echo 6. Starting Malwarebytes
 start %folder%\%MwbApp% /scan:issues
 start %folder%\%MwbApp% /scan:malware

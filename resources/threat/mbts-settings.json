@@ -1,0 +1,48 @@
+{
+  "Header": {
+    "Version": "1"
+  },
+  "ProgramSettings": {
+    "StartScreen": "Inform",
+    "SendTelemetry": true,
+    "PrivacyPolicyURL": "https://www.malwarebytes.com/legal/privacy-policy",
+    "ReleaseNotesFile": "ReleaseNotes.txt",
+    "EULAFile": "EULA.txt",
+    "WriteDebugOutput": true,
+    "DebugOutputFile": "DebugLogging.txt"
+  },
+  "MalwareSettings": {
+    "ProgramOptions": {
+      "KillProcessType": "Always",
+      "UseMBWhitelist": true,
+      "CustomProcessWhiteList": [
+        "bomgar*",
+        "PcCheckWindows*",
+        "Remote*",
+        "AdwCleaner*"
+      ],
+      "LogToFile": true,
+      "AllowScanCancel": true,
+      "ExtractDirectory": ".\\",
+      "UpdateCheckFrequency": 0,
+      "PromptForReboot": true,
+      "PromptForRemovals": true,
+      "ProxySettings": {
+        "Enabled": false,
+        "Host": "",
+        "Port": 0,
+        "Username": "",
+        "Password": ""
+      }
+    },
+    "ScanOptions": {
+      "ScanType": "Threat",
+      "PathsToScan": [],
+      "ScanRootkit": true,
+      "StdLog": "Logs\\MBBRLOG.xml",
+      "ScanResults": "MBTSScanResults.xml",
+      "IgnorePUPs": false,
+      "IgnoreArchives": true
+    }
+  }
+}
